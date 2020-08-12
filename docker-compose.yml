@@ -1,0 +1,9 @@
+php:
+ image: php:latest
+ container_name: desafio
+ restart: always
+ ports:
+  - "8000:80"
+ volumes:
+ - ./app:/www
+ - ./site.conf:/etc/nginx/conf.d/site.conf
