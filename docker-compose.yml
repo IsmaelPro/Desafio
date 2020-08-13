@@ -1,9 +1,16 @@
-php:
- image: php:latest
+web:
+ image: nginx:latest
  container_name: desafio
  restart: always
  ports:
-  - "8000:80"
+  - "8080:80"
+ volumes: 
+  - ./app:/usr/share/nginx/html
+ links:
+ - php
+php:
+ image: php:7.3-fpm
+ container_name: php-fpm
  volumes:
- - ./app:/www
- - ./site.conf:/etc/nginx/conf.d/site.conf
+ - ./app:/usr/share/nginx/html
+ 
